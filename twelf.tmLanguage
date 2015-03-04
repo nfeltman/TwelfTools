@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>elf</string>
+	</array>
+	<key>name</key>
+	<string>Twelf</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>comment</key>
+			<string>Twelf keywords</string>
+			<key>match</key>
+			<string>\b(type)\b</string>
+			<key>name</key>
+			<string>keyword.source.twelf</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Twelf directives</string>
+			<key>match</key>
+			<string>\b(%mode|%name)\b</string>
+			<key>name</key>
+			<string>directive.source.twelf</string>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>\%\{</string>
+			<key>comment</key>
+			<string>Block Comment</string>
+			<key>end</key>
+			<string>\}\%</string>
+			<key>name</key>
+			<string>blockcomment.twelf</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Line Comment</string>
+			<key>match</key>
+			<string>%%.*$\n?</string>
+			<key>name</key>
+			<string>linecomment.twelf</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Character</string>
+			<key>match</key>
+			<string>(-&gt;|&lt;-|:|\.)</string>
+			<key>name</key>
+			<string>constant.character.twelf</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Metavariables</string>
+			<key>match</key>
+			<string>\b[A-Z]([A-z0-9\']*)\b</string>
+			<key>name</key>
+			<string>support.metavariable.source.twelf</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Local Variables</string>
+			<key>match</key>
+			<string>\b[a-z]([A-z0-9\']*)\b</string>
+			<key>name</key>
+			<string>support.variable.twelf</string>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>source.twelf</string>
+</dict>
+</plist>
