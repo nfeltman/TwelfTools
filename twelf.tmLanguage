@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>fileTypes</key>
@@ -10,22 +11,6 @@
 	<key>patterns</key>
 	<array>
 		<dict>
-			<key>comment</key>
-			<string>Twelf keywords</string>
-			<key>match</key>
-			<string>\b(type)\b</string>
-			<key>name</key>
-			<string>keyword.source.twelf</string>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>Twelf directives</string>
-			<key>match</key>
-			<string>\b(%mode|%name)\b</string>
-			<key>name</key>
-			<string>directive.source.twelf</string>
-		</dict>
-		<dict>
 			<key>begin</key>
 			<string>\%\{</string>
 			<key>comment</key>
@@ -33,42 +18,91 @@
 			<key>end</key>
 			<string>\}\%</string>
 			<key>name</key>
-			<string>blockcomment.twelf</string>
+			<string>comment.block.twelf</string>
 		</dict>
 		<dict>
 			<key>comment</key>
 			<string>Line Comment</string>
 			<key>match</key>
-			<string>%%.*$\n?</string>
+			<string>\%\%.*\n</string>
 			<key>name</key>
-			<string>linecomment.twelf</string>
+			<string>comment.line.twelf</string>
 		</dict>
 		<dict>
+			<key>begin</key>
+			<string>([a-z0-9_\-][A-Za-z0-9_\-]*)\s*:</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function</string>
+				</dict>
+			</dict>
 			<key>comment</key>
-			<string>Character</string>
-			<key>match</key>
-			<string>(-&gt;|&lt;-|:|\.)</string>
+			<string>Atomic Declaration</string>
+			<key>end</key>
+			<string>\.</string>
 			<key>name</key>
-			<string>constant.character.twelf</string>
+			<string>meta.function.twelf</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>comment</key>
+					<string>Just Keywords</string>
+					<key>match</key>
+					<string>type</string>
+					<key>name</key>
+					<string>constant.language.twelf</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>Arrows</string>
+					<key>match</key>
+					<string>(\-&gt;|&lt;\-)</string>
+					<key>name</key>
+					<string>keyword.operator.twelf</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>Grouping Operators</string>
+					<key>match</key>
+					<string>\{|\}|\(|\)|:</string>
+					<key>name</key>
+					<string>keyword.character.escape</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>Meta Variables</string>
+					<key>match</key>
+					<string>[A-Z][A-Za-z0-9_\-]*</string>
+					<key>name</key>
+					<string>variable.language.twelf</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>Standard Variables</string>
+					<key>match</key>
+					<string>[a-z0-9_\-][A-Za-z0-9_\-]*</string>
+					<key>name</key>
+					<string>variable.parameter.twelf</string>
+				</dict>
+			</array>
 		</dict>
 		<dict>
+			<key>begin</key>
+			<string>\%(name|worlds|block|mode|total)</string>
 			<key>comment</key>
-			<string>Metavariables</string>
-			<key>match</key>
-			<string>\b[A-Z]([A-z0-9\']*)\b</string>
+			<string>Other Directives</string>
+			<key>end</key>
+			<string>\.</string>
 			<key>name</key>
-			<string>support.metavariable.source.twelf</string>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>Local Variables</string>
-			<key>match</key>
-			<string>\b[a-z]([A-z0-9\']*)\b</string>
-			<key>name</key>
-			<string>support.variable.twelf</string>
+			<string>support.typedef.twelf</string>
 		</dict>
 	</array>
 	<key>scopeName</key>
 	<string>source.twelf</string>
+	<key>uuid</key>
+	<string>6b5536a4-8b6d-4f22-9470-66f5f4d8a052</string>
 </dict>
 </plist>
