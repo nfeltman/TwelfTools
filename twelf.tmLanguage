@@ -11,22 +11,12 @@
 	<key>patterns</key>
 	<array>
 		<dict>
-			<key>begin</key>
-			<string>\%\{</string>
-			<key>comment</key>
-			<string>Block Comment</string>
-			<key>end</key>
-			<string>\}\%</string>
-			<key>name</key>
-			<string>comment.block.twelf</string>
+			<key>include</key>
+			<string>#blockComment</string>
 		</dict>
 		<dict>
-			<key>comment</key>
-			<string>Line Comment</string>
-			<key>match</key>
-			<string>\%\%.*\n</string>
-			<key>name</key>
-			<string>comment.line.twelf</string>
+			<key>include</key>
+			<string>#lineComment</string>
 		</dict>
 		<dict>
 			<key>begin</key>
@@ -47,6 +37,14 @@
 			<string>meta.function.twelf</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#blockComment</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#lineComment</string>
+				</dict>
 				<dict>
 					<key>comment</key>
 					<string>Just Keywords</string>
@@ -98,8 +96,44 @@
 			<string>\.</string>
 			<key>name</key>
 			<string>support.typedef.twelf</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#blockComment</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#lineComment</string>
+				</dict>
+			</array>
 		</dict>
 	</array>
+	<key>repository</key>
+	<dict>
+		<key>blockComment</key>
+		<dict>
+			<key>begin</key>
+			<string>\%\{</string>
+			<key>comment</key>
+			<string>Block Comment</string>
+			<key>end</key>
+			<string>\}\%</string>
+			<key>name</key>
+			<string>comment.block.twelf</string>
+		</dict>
+		<key>lineComment</key>
+		<dict>
+			<key>begin</key>
+			<string>\%\%</string>
+			<key>comment</key>
+			<string>Line Comment</string>
+			<key>end</key>
+			<string>\n</string>
+			<key>name</key>
+			<string>comment.line.twelf</string>
+		</dict>
+	</dict>
 	<key>scopeName</key>
 	<string>source.twelf</string>
 	<key>uuid</key>
