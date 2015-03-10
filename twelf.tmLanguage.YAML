@@ -25,7 +25,7 @@ patterns:
 
 - comment : Atomic Declaration
   name : meta.function.twelf
-  begin : '([a-z0-9_\-][A-Za-z0-9_\-]*)\s*:'
+  begin : '([a-z0-9_\-][A-Za-z0-9_\-/\\]*)\s*:'
   end : \.
   beginCaptures :
     '1': {name: entity.name.function}
@@ -46,15 +46,15 @@ patterns:
 
   - comment: Meta Variables
     name: variable.language.twelf
-    match: '[A-Z][A-Za-z0-9_\-]*'
+    match: '[A-Z][A-Za-z0-9_\-/\\]*'
 
   - comment: Standard Variables
     name: variable.parameter.twelf
-    match: '[a-z0-9_\-][A-Za-z0-9_\-]*'
+    match: '[a-z0-9_\-][A-Za-z0-9_\-/\\]*'
 
 - comment: Other Directives
   name: support.typedef.twelf
-  begin: \%(name|worlds|block|mode|total)
+  begin: \%(name|worlds|block|mode|total|freeze)
   end: \.
   patterns: 
   - include: '#blockComment'
