@@ -46,11 +46,11 @@ patterns:
 
   - comment: Meta Variables
     name: variable.language.twelf
-    match: '[A-Z][A-Za-z0-9_\-/\\]*'
+    match: '[A-Z_][A-Za-z0-9_\-/\\]*'
 
   - comment: Standard Variables
     name: variable.parameter.twelf
-    match: '[a-z0-9_\-][A-Za-z0-9_\-/\\]*'
+    match: '[a-z0-9\-][A-Za-z0-9_\-/\\]*'
 
 - comment: Other Directives
   name: support.typedef.twelf
