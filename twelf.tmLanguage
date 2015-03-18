@@ -20,7 +20,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>([a-z0-9_\-][A-Za-z0-9_\-/\\]*)\s*:</string>
+			<string>([a-z0-9_\-][A-Za-z0-9_\-/\\\*\']*)\s*:</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -73,7 +73,7 @@
 					<key>comment</key>
 					<string>Meta Variables</string>
 					<key>match</key>
-					<string>[A-Z_][A-Za-z0-9_\-/\\]*</string>
+					<string>[A-Z_][A-Za-z0-9_\-/\\\*\']*</string>
 					<key>name</key>
 					<string>variable.language.twelf</string>
 				</dict>
@@ -81,7 +81,7 @@
 					<key>comment</key>
 					<string>Standard Variables</string>
 					<key>match</key>
-					<string>[a-z0-9\-][A-Za-z0-9_\-/\\]*</string>
+					<string>[a-z0-9\-][A-Za-z0-9_\-/\\\*\']*</string>
 					<key>name</key>
 					<string>variable.parameter.twelf</string>
 				</dict>
