@@ -89,7 +89,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>\%(name|worlds|block|mode|total|freeze)</string>
+			<string>\%(name|worlds|block|mode|total|freeze|terminates|covers|unique|abbrev)</string>
 			<key>comment</key>
 			<string>Other Directives</string>
 			<key>end</key>

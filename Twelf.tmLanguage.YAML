@@ -54,7 +54,7 @@ patterns:
 
 - comment: Other Directives
   name: support.typedef.twelf
-  begin: \%(name|worlds|block|mode|total|freeze)
+  begin: \%(name|worlds|block|mode|total|freeze|terminates|covers|unique|abbrev)
   end: \.
   patterns: 
   - include: '#blockComment'
