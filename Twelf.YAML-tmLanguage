@@ -1,0 +1,122 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+
+# capital identifier: '[A-Z_][!#$&''*-\-/-9;-Z\\\^-z|~]*'
+# non-capital identifier: '[!#$&''*-\-/-9;-@\\\^`-z|~][!#$&''*-\-/-9;-Z\\\^-z|~]*'
+---
+name: Twelf
+scopeName: source.twelf
+fileTypes: [elf]
+uuid: 6b5536a4-8b6d-4f22-9470-66f5f4d8a052
+
+repository:
+  comments:
+    patterns:
+    - comment: Line Comment
+      name: comment.line.twelf
+      begin: \%\%
+      end: \n
+
+    - comment: Block Comment
+      name: comment.block.twelf
+      begin: '\%\{'
+      end: '\}\%'
+
+  rhs:
+    patterns: 
+    - include: '#comments'
+    - comment: Just Keywords
+      name: constant.language.twelf
+      match: type
+
+    - comment: Arrows
+      name: keyword.operator.twelf
+      match: '->|<-|:'
+
+    - comment: Grouping Operators
+      name: keyword.character.escape
+      match: '\{|\}|\(|\)|\[|\]'
+
+    - comment: Meta Variables
+      name: variable.language.twelf
+      match: '[A-Z_][!#$&''*-\-/-9;-Z\\\^-z|~]*'
+
+    - comment: Standard Variables
+      name: variable.parameter.twelf
+      match: '[!#$&''*-\-/-9;-@\\\^`-z|~][!#$&''*-\-/-9;-Z\\\^-z|~]*'
+
+
+patterns:
+- include: '#comments'
+
+- comment: Constant Declaration
+  name: meta.function.twelf
+  begin: '([!#$&''*-\-/-9;-@\\\^`-z|~][!#$&''*-\-/-9;-Z\\\^-z|~]*)\s*:'
+  end: '\.'
+  beginCaptures:
+    '1': {name: entity.name.function}
+  patterns:
+  - include: '#rhs'
+
+- comment: Constant Definition
+  name: meta.function.twelf
+  begin: '([!#$&''*-\-/-9;-@\\\^-z|~][!#$&''*-\-/-9;-Z\\\^-z|~]*)\s*='
+  end: '\.'
+  beginCaptures:
+    '1': {name: entity.name.function}
+  patterns:
+  - include: '#rhs'
+
+
+- comment: Constant Definition (%abbrev)
+  name: meta.function.twelf
+  begin: '(\%abbrev)\s+([!#$&''*-\-/-9;-@\\\^-z|~][!#$&''*-\-/-9;-Z\\\^-z|~]*)\s*='
+  end: '\.'
+  beginCaptures:
+    '1': {name: support.typedef.twelf}
+    '2': {name: entity.name.function}
+  patterns:
+  - include: '#rhs'
+
+- comment: Mode Directives
+  begin: '(%mode)\s*([!-~]+)\s*'
+  end: '\.'
+  beginCaptures:
+      '1': {name: support.typedef.twelf}
+      '2': {name: variable.parameter.twelf}
+  patterns: 
+  - include: '#comments'
+  - match: '(\+|-|\*)([!-\-/-~]*)'
+    captures: 
+      '1': {name: keyword.character.escape}
+      '2': {name: variable.language.twelf}
+
+- comment: Block Declaration
+  begin: '(\%block)\s*([!-~]+)\s*:'
+  end: '\.'
+  beginCaptures:
+      '1': {name: support.typedef.twelf}
+      '2': {name: entity.name.function}
+  patterns: 
+  - include: '#comments'
+  - match: 'some'
+    name: keyword.character.escape
+  - match: 'block'
+    name: keyword.character.escape
+
+- comment: Block Definition
+  begin: '(\%block)\s*([!-~]+)\s*='
+  end: '\.'
+  beginCaptures:
+    '1': {name: support.typedef.twelf}
+    '2': {name: entity.name.function}
+  patterns: 
+  - include: '#comments'
+
+- comment: Other Directives
+  begin: (\%(name|worlds|total|freeze|terminates|covers|unique|infix|prefix|postfix|query|solve|theorem|prove))
+  end: '\.'
+  beginCaptures: 
+    '1': {name: support.typedef.twelf}
+  patterns: 
+  - include: '#comments'
+...

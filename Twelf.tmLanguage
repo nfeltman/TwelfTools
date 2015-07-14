@@ -12,15 +12,11 @@
 	<array>
 		<dict>
 			<key>include</key>
-			<string>#blockComment</string>
-		</dict>
-		<dict>
-			<key>include</key>
-			<string>#lineComment</string>
+			<string>#comments</string>
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>([a-z0-9_\-][A-Za-z0-9_\-/\\\*\'^+]*)\s*:</string>
+			<string>([!#$&amp;'*-\-/-9;-@\\\^`-z|~][!#$&amp;'*-\-/-9;-Z\\\^-z|~]*)\s*:</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -30,7 +26,7 @@
 				</dict>
 			</dict>
 			<key>comment</key>
-			<string>Atomic Declaration</string>
+			<string>Constant Declaration</string>
 			<key>end</key>
 			<string>\.</string>
 			<key>name</key>
@@ -39,11 +35,237 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#blockComment</string>
+					<string>#rhs</string>
 				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>([!#$&amp;'*-\-/-9;-@\\\^-z|~][!#$&amp;'*-\-/-9;-Z\\\^-z|~]*)\s*=</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Constant Definition</string>
+			<key>end</key>
+			<string>\.</string>
+			<key>name</key>
+			<string>meta.function.twelf</string>
+			<key>patterns</key>
+			<array>
 				<dict>
 					<key>include</key>
-					<string>#lineComment</string>
+					<string>#rhs</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>(\%abbrev)\s+([!#$&amp;'*-\-/-9;-@\\\^-z|~][!#$&amp;'*-\-/-9;-Z\\\^-z|~]*)\s*=</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.typedef.twelf</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Constant Definition (%abbrev)</string>
+			<key>end</key>
+			<string>\.</string>
+			<key>name</key>
+			<string>meta.function.twelf</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#rhs</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>(%mode)\s*([!-~]+)\s*</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.typedef.twelf</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>variable.parameter.twelf</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Mode Directives</string>
+			<key>end</key>
+			<string>\.</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comments</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.character.escape</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>variable.language.twelf</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(\+|-|\*)([!-\-/-~]*)</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>(\%block)\s*([!-~]+)\s*:</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.typedef.twelf</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Block Declaration</string>
+			<key>end</key>
+			<string>\.</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comments</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>some</string>
+					<key>name</key>
+					<string>keyword.character.escape</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>block</string>
+					<key>name</key>
+					<string>keyword.character.escape</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>(\%block)\s*([!-~]+)\s*=</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.typedef.twelf</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Block Definition</string>
+			<key>end</key>
+			<string>\.</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comments</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>(\%(name|worlds|total|freeze|terminates|covers|unique|infix|prefix|postfix|query|solve|theorem|prove))</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.typedef.twelf</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Other Directives</string>
+			<key>end</key>
+			<string>\.</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comments</string>
+				</dict>
+			</array>
+		</dict>
+	</array>
+	<key>repository</key>
+	<dict>
+		<key>comments</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>\%\%</string>
+					<key>comment</key>
+					<string>Line Comment</string>
+					<key>end</key>
+					<string>\n</string>
+					<key>name</key>
+					<string>comment.line.twelf</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\%\{</string>
+					<key>comment</key>
+					<string>Block Comment</string>
+					<key>end</key>
+					<string>\}\%</string>
+					<key>name</key>
+					<string>comment.block.twelf</string>
+				</dict>
+			</array>
+		</dict>
+		<key>rhs</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comments</string>
 				</dict>
 				<dict>
 					<key>comment</key>
@@ -57,7 +279,7 @@
 					<key>comment</key>
 					<string>Arrows</string>
 					<key>match</key>
-					<string>(\-&gt;|&lt;\-)</string>
+					<string>-&gt;|&lt;-|:</string>
 					<key>name</key>
 					<string>keyword.operator.twelf</string>
 				</dict>
@@ -65,7 +287,7 @@
 					<key>comment</key>
 					<string>Grouping Operators</string>
 					<key>match</key>
-					<string>\{|\}|\(|\)|:</string>
+					<string>\{|\}|\(|\)|\[|\]</string>
 					<key>name</key>
 					<string>keyword.character.escape</string>
 				</dict>
@@ -73,7 +295,7 @@
 					<key>comment</key>
 					<string>Meta Variables</string>
 					<key>match</key>
-					<string>[A-Z_][A-Za-z0-9_\-/\\\*\'^+]*</string>
+					<string>[A-Z_][!#$&amp;'*-\-/-9;-Z\\\^-z|~]*</string>
 					<key>name</key>
 					<string>variable.language.twelf</string>
 				</dict>
@@ -81,57 +303,11 @@
 					<key>comment</key>
 					<string>Standard Variables</string>
 					<key>match</key>
-					<string>[a-z0-9\-][A-Za-z0-9_\-/\\\*\'^+]*</string>
+					<string>[!#$&amp;'*-\-/-9;-@\\\^`-z|~][!#$&amp;'*-\-/-9;-Z\\\^-z|~]*</string>
 					<key>name</key>
 					<string>variable.parameter.twelf</string>
 				</dict>
 			</array>
-		</dict>
-		<dict>
-			<key>begin</key>
-			<string>\%(name|worlds|block|mode|total|freeze|terminates|covers|unique|abbrev)</string>
-			<key>comment</key>
-			<string>Other Directives</string>
-			<key>end</key>
-			<string>\.</string>
-			<key>name</key>
-			<string>support.typedef.twelf</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#blockComment</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#lineComment</string>
-				</dict>
-			</array>
-		</dict>
-	</array>
-	<key>repository</key>
-	<dict>
-		<key>blockComment</key>
-		<dict>
-			<key>begin</key>
-			<string>\%\{</string>
-			<key>comment</key>
-			<string>Block Comment</string>
-			<key>end</key>
-			<string>\}\%</string>
-			<key>name</key>
-			<string>comment.block.twelf</string>
-		</dict>
-		<key>lineComment</key>
-		<dict>
-			<key>begin</key>
-			<string>\%\%</string>
-			<key>comment</key>
-			<string>Line Comment</string>
-			<key>end</key>
-			<string>\n</string>
-			<key>name</key>
-			<string>comment.line.twelf</string>
 		</dict>
 	</dict>
 	<key>scopeName</key>
