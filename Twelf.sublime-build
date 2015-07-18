@@ -1,5 +1,6 @@
 {
-	"selector": "source.Twelf",
+	"selector": "source.twelf",
 	"shell_cmd": "echo \"make $project_path/sources.cfg\" | twelf-server",
-	"file_regex" : "(.+):([0-9]+)\\.([0-9]+)\\-[0-9]+\\.[0-9]+"
+	"file_regex": "(.+):([0-9]+)\\.([0-9]+)\\-[0-9]+\\.[0-9]+",
+	"syntax": "Packages/TwelfTools/Twelf.tmLanguage"
 }
