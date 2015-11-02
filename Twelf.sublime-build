@@ -1,6 +1,6 @@
 {
 	"selector": "source.twelf",
-	"shell_cmd": "echo \"make $project_path/sources.cfg\" | twelf-server",
+	"shell_cmd": "echo \"set chatter 3\nmake $project_path/sources.cfg\" | twelf-server",
 	"file_regex": "(.+):([0-9]+)\\.([0-9]+)\\-[0-9]+\\.[0-9]+",
 	"syntax": "Packages/TwelfTools/Twelf.tmLanguage"
 }
